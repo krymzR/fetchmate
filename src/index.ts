@@ -1,39 +1,48 @@
 export interface FetchmateOptions extends RequestInit {
   maxRetries?: number;
-  retryDelay?: number; // in ms
+  retryDelay?: number; // ms
+  retryOnStatuses?: number[]; // HTTP statuses that trigger a retry
 }
 
 function delay(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+/**
+ * Determines if the response status should trigger a retry.
+ */
+function shouldRetry(response: Response, retryOnStatuses: number[]) {
+  return retryOnStatuses.includes(response.status);
+}
+
 export async function fetchmate(
   url: string,
   options: FetchmateOptions = {}
 ): Promise<Response> {
-  const { maxRetries = 0, retryDelay = 300, ...fetchOptions } = options;
+  const {
+    maxRetries = 0,
+    retryDelay = 300,
+    retryOnStatuses = [500, 501, 502, 503, 504, 505],
+    ...fetchOptions
+  } = options;
 
-  let attempt = 0;
-  let lastError: any;
-
-  while (attempt <= maxRetries) {
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
     try {
       const response = await fetch(url, fetchOptions);
 
-      // Retry only on server errors
-      if (response.status >= 500 && response.status < 600) {
-        throw new Error(`Server error: ${response.status}`);
+      if (!response.ok && shouldRetry(response, retryOnStatuses)) {
+        throw new Error(`Retryable server error: ${response.status}`);
       }
 
-      return response;
+      return response; // success!
     } catch (error) {
-      lastError = error;
-      if (attempt === maxRetries) break;
-
+      if (attempt === maxRetries) {
+        throw error; // no retries left
+      }
       await delay(retryDelay);
-      attempt++;
     }
   }
 
-  throw lastError;
+  // Should never get here because of throw inside catch
+  throw new Error("Unknown error in fetchmate");
 }

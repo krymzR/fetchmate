@@ -1,4 +1,5 @@
-export default {
+/** @type {import('ts-jest').JestConfigWithTsJest} */
+module.exports = {
   preset: "ts-jest/presets/default-esm",
   testEnvironment: "jsdom",
   extensionsToTreatAsEsm: [".ts"],
@@ -10,6 +11,5 @@ export default {
       },
     ],
   },
-  moduleNameMapper: {}, // optional: if you're using path aliases
   roots: ["<rootDir>/tests"],
 };
