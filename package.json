@@ -1,5 +1,5 @@
 {
-  "name": "fetchmate",
+  "name": "@nursoltan-s/fetchmate",
   "version": "1.0.0",
   "description": "Flexible Fetch API companion — extendable, reliable, and built for modern web requests.",
   "type": "module",
@@ -9,6 +9,12 @@
     "name": "Nursoltan Saipolda",
     "email": "nursoltan.s@gmail.com",
     "url": "https://github.com/nursoltan-s/"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
   },
   "scripts": {
     "build": "tsc",
@@ -33,5 +39,13 @@
   },
   "dependencies": {
     "node-fetch": "^2.7.0"
-  }
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ]
 }

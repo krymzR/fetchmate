@@ -1,0 +1,5 @@
+src/
+tests/
+jest.config.*
+tsconfig.*
+README.draft.md

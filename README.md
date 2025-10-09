@@ -2,13 +2,18 @@
 
 **Your flexible Fetch API companion — extendable, reliable, and built for modern web requests..**
 
+[![npm version](https://img.shields.io/npm/v/@nursoltan-s/fetchmate.svg?style=flat&color=green)](https://www.npmjs.com/package/@nursoltan-s/fetchmate)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
+[![Build Status](https://img.shields.io/badge/tests-passing-brightgreen)](#-testing)
+[![Made with TypeScript](https://img.shields.io/badge/TypeScript-%E2%9C%93-blue)](#)
+
 ---
 
 ## 🚀 What is fetchmate?
 
-`fetchmate` is a lightweight and flexible wrapper around the native [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) that supercharges your HTTP requests with robust retry capabilities, customizable delays, and easy configuration.
+`@nursoltan-s/fetchmate` is a lightweight and flexible wrapper around the native [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) that supercharges your HTTP requests with robust retry capabilities, customizable delays, and easy configuration.
 
-Whether you're dealing with flaky network conditions, rate limits, or intermittent server errors, `fetchmate` has got your back — so you can keep your code clean and your apps resilient.
+Whether you're dealing with flaky network conditions, rate limits, or intermittent server errors, `@nursoltan-s/fetchmate` has got your back — so you can keep your code clean and your apps resilient.
 
 ---
 
@@ -25,16 +30,16 @@ Whether you're dealing with flaky network conditions, rate limits, or intermitte
 ## 📦 Installation
 
 ```bash
-npm install fetchmate
+npm install @nursoltan-s/fetchmate
 # or
-yarn add fetchmate
+yarn add @nursoltan-s/fetchmate
 
 ```
 
 ## 💡 Usage
 
 ```
-import { fetchmate } from 'fetchmate';
+import { fetchmate } from '@nursoltan-s/fetchmate';
 
 async function getData() {
   try {
