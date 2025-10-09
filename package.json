@@ -2,16 +2,25 @@
   "name": "fetchmate",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "author": {
     "name": "Nursoltan Saipolda",
     "email": "nursoltan.s@gmail.com",
     "url": "https://github.com/nursoltan-s/"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc"
   },
-  "keywords": [],
+  "keywords": [
+    "fetch",
+    "retry",
+    "http",
+    "wrapper",
+    "javascript",
+    "typescript"
+  ],
   "license": "MIT",
   "devDependencies": {
     "typescript": "^5.9.3"
