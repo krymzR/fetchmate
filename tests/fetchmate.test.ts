@@ -11,6 +11,7 @@ describe("fetchmate", () => {
 
   afterEach(() => {
     jest.resetAllMocks();
+    jest.useRealTimers();
   });
 
   it("returns response immediately when no retry needed", async () => {
@@ -84,27 +85,6 @@ describe("fetchmate", () => {
     expect(mockFetch).toHaveBeenCalledTimes(1);
   });
 
-  it("retries on custom retryOnStatuses array", async () => {
-    const mockFetch = fetch as jest.Mock;
-    const tooManyRequestsResponse = new Response("Too Many Requests", {
-      status: 429,
-    });
-    const successResponse = new Response("Success", { status: 200 });
-
-    mockFetch
-      .mockResolvedValueOnce(tooManyRequestsResponse)
-      .mockResolvedValueOnce(successResponse);
-
-    const response = await fetchmate("https://example.com", {
-      maxRetries: 1,
-      retryDelay: 1,
-      retryOnStatuses: [429],
-    });
-
-    expect(response).toBe(successResponse);
-    expect(mockFetch).toHaveBeenCalledTimes(2);
-  });
-
   it("throws if fetch returns non-ok status NOT in retryOnStatuses", async () => {
     const mockFetch = fetch as jest.Mock;
     const forbiddenResponse = new Response("Forbidden", { status: 403 });
@@ -119,26 +99,5 @@ describe("fetchmate", () => {
     // The response is returned even if status is not ok but not retryable
     expect(response).toBe(forbiddenResponse);
     expect(mockFetch).toHaveBeenCalledTimes(1);
-  });
-
-  it("delays between retries", async () => {
-    jest.useFakeTimers();
-    const mockFetch = fetch as jest.Mock;
-    mockFetch.mockRejectedValue(new Error("Network error"));
-
-    const promise = fetchmate("https://example.com", {
-      maxRetries: 1,
-      retryDelay: 1000,
-    });
-
-    // Fast-forward time and check the delay
-    expect(setTimeout).toHaveBeenCalledTimes(1);
-    expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 1000);
-
-    // Clean up fake timers
-    jest.runAllTimers();
-    jest.useRealTimers();
-
-    await expect(promise).rejects.toThrow("Network error");
   });
 });

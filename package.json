@@ -1,7 +1,7 @@
 {
   "name": "fetchmate",
   "version": "1.0.0",
-  "description": "",
+  "description": "Flexible Fetch API companion — extendable, reliable, and built for modern web requests.",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
