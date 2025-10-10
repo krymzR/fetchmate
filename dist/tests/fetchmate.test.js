@@ -70,7 +70,6 @@ describe("fetchmate", () => {
             maxRetries: 1,
             retryDelay: 1,
         });
-        // The response is returned even if status is not ok but not retryable
         expect(response).toBe(forbiddenResponse);
         expect(mockFetch).toHaveBeenCalledTimes(1);
     });
