@@ -72,12 +72,13 @@ fetchmate(url: string, options?: FetchmateOptions): Promise<Response>
 - url: The resource you want to fetch.
 - options: An object extending the standard Fetch API options with additional properties:
 
-| Option            | Type          | Default                          | Description                                    |
-| ----------------- | ------------- | -------------------------------- | ---------------------------------------------- |
-| `maxRetries`      | `number`      | `0`                              | Maximum number of retry attempts on failure.   |
-| `retryDelay`      | `number`      | `300` (milliseconds)             | Delay between retries in ms.                   |
-| `retryOnStatuses` | `number[]`    | `[500, 501, 502, 503, 504, 505]` | HTTP status codes that should trigger a retry. |
-| _..._             | `RequestInit` | —                                | All standard options from the Fetch API.       |
+| Option            | Type          | Default     | Description                                                                               |
+| ----------------- | ------------- | ----------- | ----------------------------------------------------------------------------------------- |
+| `maxRetries`      | `number`      | `0`         | Maximum number of retry attempts.                                                         |
+| `retryDelay`      | `number`      | `300` (ms)  | Base delay between retries.                                                               |
+| `backoff`         | `boolean`     | `false`     | If `true`, applies exponential backoff (`retryDelay * 2 ** attempt`).                     |
+| `retryOnStatuses` | `number[]`    | `[500–599]` | HTTP status codes that should trigger a retry.                                            |
+| ...               | `RequestInit` | —           | All standard [Fetch API options](https://developer.mozilla.org/docs/Web/API/RequestInit). |
 
 ## 🔧 Why fetchmate?
 
@@ -92,6 +93,10 @@ fetchmate(url: string, options?: FetchmateOptions): Promise<Response>
 ## 🧪 Testing
 
 fetchmate is thoroughly tested with Jest and supports both JavaScript and TypeScript environments.
+
+```
+npm test
+```
 
 ## 🤝 Contributing
 
